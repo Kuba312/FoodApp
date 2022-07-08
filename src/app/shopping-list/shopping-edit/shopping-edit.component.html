@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-5 form-group">
+            <label for="name">Name</label>
+            <input
+            type="text"
+            id="name"
+            [(ngModel)]="name"
+            class="form-control"
+            formControlName="name">
+            <span style="color: #fc9191"
+            class="help-block"
+            *ngIf="!formGroup.get('name')?.valid && formGroup.get('name')?.touched ">Please
+              enter a name!</span>
+          </div>
+
+          <div class="col-sm-2 form-group">
+            <label for="amount">Amount</label>
+            <input
+            type="number"
+            name="amount"
+            class="form-control"
+            [(ngModel)]="amount"
+            formControlName="amount">
+             <span style="color: #fc9191;"
+             class="help-block"
+             *ngIf="!formGroup.get('amount')?.valid && formGroup.get('amount')?.touched">
+            Amount cannot be empty and should be greater than 1
+          </span>
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button [disabled]="!formGroup.valid" class="btn btn-success" type="submit">
+            {{showEditForm ? 'edit': 'add'}}</button>
+          <button [disabled]="!formGroup.valid" class="btn btn-danger" *ngIf="showEditForm" (click)="deleteItem()" type="submit">Delete</button>
+          <button [disabled]="!formGroup.valid" class="btn btn-primary" (click)="onClear()" type="submit">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
