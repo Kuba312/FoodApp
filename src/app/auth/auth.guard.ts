@@ -10,7 +10,9 @@ import { AuthService } from "./auth.service";
 export class AuthGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router) { }
-
+  // auth guard is responsible for creating guardian for links. This is used for security purposes.
+  // we can define custom logic where we can tell angular in which conditions users are allowed to access the
+  // under specifc links.
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     return this.authService.user.pipe(take(1), map(user => {
       const isAuth = !!user
@@ -18,11 +20,6 @@ export class AuthGuard implements CanActivate {
         return true;
       }
       return this.router.createUrlTree(['/auth']);
-
-      // }), tap(isAuth=> {
-      //   if(!isAuth){
-      //     this.router.navigate(['/auth'])
-      //   }
     }))
   }
 

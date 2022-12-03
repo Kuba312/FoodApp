@@ -7,13 +7,14 @@ import { LoggingService } from './logging.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService, private loggingService: LoggingService){}
+  constructor(private authService: AuthService,
+    private loggingService: LoggingService) { }
 
   ngOnInit(): void {
-   this.authService.autoLogin();
-   this.loggingService.printLog('Hello from App component loggingService');
+    this.authService.autoLogin();
+    this.loggingService.printLog('Hello from App component loggingService');
   }
 
 }

@@ -23,7 +23,7 @@ const routes: Routes = [
   }
 ]
 
-
+// forChild becasue this is not main route
 @NgModule({
   declarations: [],
   imports: [

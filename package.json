@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "dev:ssr": "ng run appFromCourse:serve-ssr",
+    "serve:ssr": "node dist/appFromCourse/server/main.js",
+    "build:ssr": "ng build && ng run appFromCourse:server",
+    "prerender": "ng run appFromCourse:prerender"
   },
   "private": true,
   "dependencies": {
@@ -17,14 +21,18 @@
     "@angular/forms": "~13.2.0",
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
+    "@angular/platform-server": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "@ngrx/store": "^15.0.0",
+    "@nguniversal/module-map-ngfactory-loader": "^8.2.6",
     "bootstrap": "^3.4.1",
+    "radium": "^0.26.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.2.3",
+    "@angular-devkit/build-angular": "^13.3.9",
     "@angular/cli": "~13.2.3",
     "@angular/compiler-cli": "~13.2.0",
     "@types/jasmine": "~3.10.0",

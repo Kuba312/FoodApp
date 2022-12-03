@@ -23,7 +23,7 @@ export class RecipeService {
   //     ]),
   //   new Recipe(3, 'Fries', 'Fires made by potatos',
   //     'https://images.unsplash.com/photo-1585109649139-366815a0d713?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZnJlbmNoJTIwZnJpZXN8ZW58MHx8MHx8&w=1000&q=80',
-  //     [
+
   //       new Ingredient("oil", 4)
   //     ]),
   // ];
@@ -31,7 +31,7 @@ export class RecipeService {
   private recipes: Recipe[] = [];
   emitRecipes = new Subject<Recipe[]>();
 
-  constructor(private shoppingListService: ShoppingListService) { }
+  constructor() { }
 
   getRecipes() {
     return this.recipes.slice();

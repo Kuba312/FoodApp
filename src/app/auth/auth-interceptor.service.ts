@@ -13,13 +13,14 @@ export class AuthInterceptorService implements HttpInterceptor {
   constructor(private authService: AuthService) {
 
   }
-
+  // Interceptor allows us to add some custom value in headers to allow user for specifc actions.
+  // If app doesn't receive value in header, app dosen't allow for some specidc actions.
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // make sure that we get user once and we are done
     return this.authService.user.pipe(take(1),
       exhaustMap(user => {
         // if we haven't a user login, we should continue a http jurney
-        if(!user){
+        if (!user) {
           return next.handle(req);
         }
         // if we have a user, we add to param auth set with user token to be able to fetch data
